@@ -2,13 +2,13 @@
 
 ## Overview
 
-The purpose of this exercise is for us to get a sense of how you would approach designing and implementing a simple service, whilst we will look at the quality of code we are also interested in seeing how you would organise a codebase.
+The purpose of this exercise is for us understand how you would working in an existing project as part of a team, this includes designing and implementing a simple API service. Whilst we will be looking at the quality of code we are also interested in seeing how you would organise a codebase.
 
 ## Requirements
 
 You will be required to extend an API written by one of our developers, we expect that you will expand upon and restructure any of the code as you see fit. Please note this should be treated as production ready code.
 
-If you make any assumptions about requirements, or use any online resources to solve a problem, please make note of these somewhere obvious inside the solution (e.g. code comments).
+Please make a note in the project with comments about any assumptions you have made regarding the requirement, or if you have used an online resource to solve a problem.
 
 ### Our API has already created one endpoint:
 
@@ -68,4 +68,4 @@ Please add any instructions for running your project here
 
 Once complete please update the README to include any instructions of how to set up and run your project then share your a public repository containing your code by emailing a URL to frank@simble.io
 
-Your solution will be evaluated internally by one or more of your potential co workers.
+Your solution will then be evaluated by our team.
