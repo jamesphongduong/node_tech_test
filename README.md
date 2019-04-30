@@ -2,7 +2,7 @@
 
 ## Overview
 
-The purpose of this exercise is for us understand how you would working in an existing project as part of a team, this includes designing and implementing a simple API service. Whilst we will be looking at the quality of code we are also interested in seeing how you would organise a codebase.
+The purpose of this exercise is for us to understand how you would work on an existing project as part of a team. This includes designing and implementing a simple API service. Whilst we will be looking at the quality of your code, we are also interested in seeing how you would organise a codebase.
 
 ## Requirements
 
@@ -66,6 +66,6 @@ Please add any instructions for running your project here
 
 ## Submission
 
-Once complete please update the README to include any instructions of how to set up and run your project then share your a public repository containing your code by emailing a URL to frank@simble.io
+Once complete please update the README to include any instructions of how to set up and run your project then share your public repository containing your code by emailing a URL to frank@simble.io
 
 Your solution will then be evaluated by our team.
