@@ -1,6 +1,6 @@
 import deviceModel from './../database/models/deviceModel';
 
-const index = async ctx => {
+const create = async ctx => {
   const device = await deviceModel.create({
     name: ctx.request.body.name,
     location: ctx.request.body.location,
@@ -17,4 +17,4 @@ const index = async ctx => {
   console.log(device);
 };
 
-export default { index };
+export default { create };

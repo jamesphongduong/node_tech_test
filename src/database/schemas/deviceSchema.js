@@ -4,7 +4,7 @@ const deviceSchema = new Schema({
   name: String,
   location: String,
   // scenes: [Number]
-  scenes: Number
+  scenes: Array
 });
 
 export default deviceSchema;
