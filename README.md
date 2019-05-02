@@ -64,6 +64,12 @@ The `devices` field contains a list of ids for all the devices that used this sc
 
 Please add any instructions for running your project here
 
+## Assumptions
+
+- Date is given in DD-MM-YYYY format for Post /scenes
+- For scalabity / reusability of common functions, a helperFunctions folder was created
+- Validation was not required as part of this challenge
+
 ## Submission
 
 Once complete please update the README to include any instructions of how to set up and run your project then share your public repository containing your code by emailing a URL to frank@simble.io

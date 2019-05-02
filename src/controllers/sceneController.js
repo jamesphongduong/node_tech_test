@@ -39,7 +39,7 @@ const index = async ctx => {
 
   // $in operator: match any value in array
   const deviceList = await deviceModel.find({ scenes: { $in: [name] } });
-  console.log('dL', deviceList);
+
   // device ids
   const devices = deviceList.map(e => e._id);
 
