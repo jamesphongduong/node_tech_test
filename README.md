@@ -62,8 +62,8 @@ The `devices` field contains a list of ids for all the devices that used this sc
 
 ## Setup Instructions
 
-Requirements: Node and Mongo
-From cmd:
+Requirements: Node and Mongo  
+From cmd line:
 
 - git clone https://github.com/jamesphongduong/node_tech_test.git
 - cd node_tech_test
@@ -85,7 +85,7 @@ For step 6 (setting up the user for the database), use the below:
 )
 </pre>
 
-This way means mongo will use the 'admin database' to authenticate the user against
+This way means MongoDB will use the 'admin database' to authenticate the user against
 
 ## Assumptions
 
