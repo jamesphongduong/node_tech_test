@@ -1,10 +1,17 @@
 import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
 import compose from 'koa-compose';
-import router from './routes';
+import deviceRoutes from './routes/deviceRoutes';
+import sceneRoutes from './routes/sceneRoutes';
 
 const app = new Koa();
 
-app.use(compose([bodyParser(), router.allowedMethods(), router.routes()]));
+app.use(
+  compose([bodyParser(), deviceRoutes.allowedMethods(), deviceRoutes.routes()])
+);
+
+app.use(
+  compose([bodyParser(), sceneRoutes.allowedMethods(), sceneRoutes.routes()])
+);
 
 export default app;
