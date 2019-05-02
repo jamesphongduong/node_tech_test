@@ -62,7 +62,8 @@ The `devices` field contains a list of ids for all the devices that used this sc
 
 ## Setup Instructions
 
-Requirements: Node and Mongo  
+Requirements: Node, MongoDB and Software to make API calls (I used Postman)
+
 From cmd line:
 
 - git clone https://github.com/jamesphongduong/node_tech_test.git
@@ -72,7 +73,7 @@ From cmd line:
 
 - to set up MongoDB with authentication / enabling access control (part of this challenge), follow MongoDB docs [link](https://docs.mongodb.com/manual/tutorial/enable-authentication/).
 
-For step 6 (setting up the user for the database), use the below:
+For step 6 of the docs (setting up the user for the database), use the below:
 
 <pre>
  use admin
