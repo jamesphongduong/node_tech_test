@@ -9,7 +9,7 @@ const connect = async () => {
   }
 
   db = await mongoose.connect(
-    'mongodb://localhost:27017/test1?authSource=admin',
+    'mongodb://localhost:27017/simble?authSource=admin',
     {
       user: 'root',
       pass: 'simble',

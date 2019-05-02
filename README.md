@@ -62,16 +62,33 @@ The `devices` field contains a list of ids for all the devices that used this sc
 
 ## Setup Instructions
 
-Please add any instructions for running your project here
+Requirements: Node and Mongo
+From cmd:
+
+- git clone https://github.com/jamesphongduong/node_tech_test.git
+- cd node_tech_test
+- npm i
+- npm start to start server
+
+- to set up MongoDB with authentication / enabling access control (part of this challenge), follow MongoDB docs [link](https://docs.mongodb.com/manual/tutorial/enable-authentication/).
+
+For step 6 (setting up the user for the database), use the below:
+
+<pre>
+ use admin
+  db.createUser(
+  {
+    user: "root",
+    pwd: "simble",
+    roles: [ { role: "readWrite", db: "simble" } ]
+  }
+)
+</pre>
+
+This way means mongo will use the 'admin database' to authenticate the user against
 
 ## Assumptions
 
 - Date is given in DD-MM-YYYY format for Post /scenes
 - For scalabity / reusability of common functions, a helperFunctions folder was created
 - Validation was not required as part of this challenge
-
-## Submission
-
-Once complete please update the README to include any instructions of how to set up and run your project then share your public repository containing your code by emailing a URL to frank@simble.io
-
-Your solution will then be evaluated by our team.
