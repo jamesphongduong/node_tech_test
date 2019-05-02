@@ -1,6 +1,13 @@
 import sceneModel from './../database/models/sceneModel';
 import deviceModel from './../database/models/deviceModel';
+import {
+  flattenArray,
+  removeArrayDuplicates,
+  deleteElement
+} from './../helperFunctions/arrayHelpers';
+import { parseDate } from './../helperFunctions/dateParser';
 
+// make new scene
 const create = async ctx => {
   const scene = await sceneModel.create({
     name: ctx.request.body.name,
@@ -8,72 +15,53 @@ const create = async ctx => {
     date: ctx.request.body.date
   });
 
+  // api response
   ctx.body = {
     id: scene._id,
     name: scene.name,
     description: scene.description,
     date: scene.date
   };
-
-  console.log(scene);
 };
 
-const index = ctx => {
-  // console.log(ctx.params);
+// retrieve scene data
+const index = async ctx => {
   const { id: _id, date } = ctx.params;
-  const x = null;
+  const parsedDate = parseDate(date);
 
-  sceneModel
-    .findOne({
-      _id,
-      date
-    })
-    .then(res => {
-      const scene = res;
-      const sceneName = res.name;
-      // console.log('scene', scene);
-      // console.log('sceneName', sceneName);
+  const scene = await sceneModel.findOne({
+    _id,
+    date: parsedDate
+  });
 
-      // $in operator: match any value in array
-      deviceModel.find({ scenes: { $in: [sceneName] } }).then(res => {
-        const devices = res;
-        // console.log(devices);
+  // scene name
+  const name = scene.name;
 
-        // DEVICE IDS
-        const deviceIds = res.map(e => e._id);
-        // console.log(deviceIds);
+  // $in operator: match any value in array
+  const deviceList = await deviceModel.find({ scenes: { $in: [name] } });
 
-        // COUNT
-        const count = devices.length; //length of array
-        // console.log('count', count);
+  // device ids
+  const devices = deviceList.map(e => e._id);
 
-        // RELATED SCENES
-        const relatedScenes = res.map(e => e.scenes);
-        const merged = [].concat.apply([], relatedScenes);
-        // console.log('merged', merged);
+  // count
+  const count = deviceList.length; //length of array
 
-        merged.forEach((e, i) => {
-          if (e === sceneName) {
-            merged.splice(i, 1);
-          }
-        });
-        // console.log('merged1', merged);
+  // related scenes (dirty data)
+  const allScenes = deviceList.map(e => e.scenes);
+  const dirtyRelatedScenes = flattenArray(allScenes); // to flatten array of arrays
+  deleteElement(dirtyRelatedScenes, name); // to remove selected scene from related scenes
 
-        const final = merged.filter((v, i, a) => a.indexOf(v) === i);
-        // console.log('final', final);
+  // related scenes (cleaned)
+  const relatedScenes = removeArrayDuplicates(dirtyRelatedScenes); // remove duplicate scenes in array
 
-        // const indexes = merged.indexOf(sceneName);
-        // console.log('index', indexes);
-        const object = {
-          name: sceneName,
-          date,
-          count,
-          devices: deviceIds,
-          relatedScenes: final
-        };
-        console.log(object);
-      });
-    });
+  // api response
+  ctx.body = {
+    name,
+    date,
+    count,
+    devices,
+    relatedScenes
+  };
 };
 
 export default { create, index };
