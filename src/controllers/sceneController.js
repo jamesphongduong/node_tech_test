@@ -28,7 +28,7 @@ const create = async ctx => {
 const index = async ctx => {
   const { id: _id, date } = ctx.params;
   const parsedDate = parseDate(date);
-
+  console.log('31', parsedDate);
   const scene = await sceneModel.findOne({
     _id,
     date: parsedDate
@@ -39,7 +39,7 @@ const index = async ctx => {
 
   // $in operator: match any value in array
   const deviceList = await deviceModel.find({ scenes: { $in: [name] } });
-
+  console.log('dL', deviceList);
   // device ids
   const devices = deviceList.map(e => e._id);
 
@@ -57,7 +57,7 @@ const index = async ctx => {
   // api response
   ctx.body = {
     name,
-    date,
+    date: parsedDate,
     count,
     devices,
     relatedScenes

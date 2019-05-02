@@ -8,13 +8,15 @@ const connect = async () => {
     return db;
   }
 
-  db = await mongoose.connect('mongodb://localhost:27017/simble');
-  // /simble?authSource=admin', {
-  //   user: 'root',
-  //   pass: 'simble',
-  //   useNewUrlParser: true
-  // })
-  // .catch(err => console.log(err));
+  // db = await mongoose.connect('mongodb://localhost:27017/simble');
+  db = await mongoose
+    .connect('mongodb://localhost:27017/test1?authSource=admin', {
+      user: 'root1',
+      pass: 'simbal',
+      useNewUrlParser: true
+    })
+    .catch(err => console.log('err', err));
+
   isConnected = db.connections[0].readyState;
   return db;
 };
